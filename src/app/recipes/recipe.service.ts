@@ -13,6 +13,7 @@ export class RecipeService{
             new Ingredient('Meat', 1), 
             new Ingredient(
                 "French Fries", 1
+                
             )
         ]),
         new Recipe('Burger', 'yum', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg', 
@@ -28,9 +29,14 @@ export class RecipeService{
         return this.recipes.slice();
     }
 
+    getRecipe(index: number){
+        return this.recipes[index];
+    }
+
     addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.slService.addIngredients(ingredients);
     }
+
 
 
 }
