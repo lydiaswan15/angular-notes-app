@@ -7,6 +7,8 @@ import { Recipe } from "./recipe.model";
 export class RecipeService{
 // Place where we manage our recipes
 
+    recipesChanged = new Subject<Recipe[]>();
+
     private recipes: Recipe[] = [
         new Recipe('Snitzel', 'Yum', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg', 
         [
@@ -37,6 +39,20 @@ export class RecipeService{
         this.slService.addIngredients(ingredients);
     }
 
+    addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    updateRecipe(index: number, newRecipe: Recipe){
+        this.recipes[index] = newRecipe; 
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    deleteRecipe(index: number){
+        this.recipes.splice(index, 1);
+        this.recipesChanged.next(this.recipes.slice());
+    }
 
 
 }
