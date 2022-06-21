@@ -28,6 +28,7 @@ export class RecipeService{
     constructor(private slService: ShoppingListService){}
 
     getRecipes(){
+        console.log("recipes on get: " + this.recipes);
         return this.recipes.slice();
     }
 
@@ -41,6 +42,7 @@ export class RecipeService{
 
     addRecipe(recipe: Recipe){
         this.recipes.push(recipe);
+        console.log("recipes: " + this.recipes);
         this.recipesChanged.next(this.recipes.slice());
     }
 
