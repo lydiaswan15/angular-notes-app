@@ -25,9 +25,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
       }
     );
 
-    console.log("OnInit Recipe List: " + this.recipes);
     this.recipes = this.recipeService.getRecipes();
-    console.log("recipes inside recipe list: " + this.recipes);
   }
   onNewRecipe(){
     this.router.navigate(['new'], {relativeTo: this.route})
